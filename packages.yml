@@ -3,13 +3,14 @@ packages:
   # Descomenta y ajusta las versiones según necesites
   
    - package: dbt-labs/dbt_utils
-  #   version: 1.1.1
+     version: 1.1.1
   
    - package: calogica/dbt_expectations
-  #   version: 0.8.5
+     version: 0.8.5
   
    - package: dbt-labs/codegen
-  #   version: 0.9.0
+     version: 0.9.0
   
    - package: dbt-labs/spark_utils
-  #   version: 0.3.3 
+     version: 0.3.3 
+
