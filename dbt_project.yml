@@ -16,11 +16,6 @@ clean-targets:
     - "target"
     - "dbt_packages"
 
-# Configuración simple sin subdirectorios
-models:
-  bank_marketing_dm:
-    +materialized: view
-
 vars:
   start_date: '{{ var("start_date", "2020-01-01") }}'
   end_date: '{{ var("end_date", "2024-12-31") }}'
