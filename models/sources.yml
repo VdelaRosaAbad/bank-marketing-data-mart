@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: bank_marketing
+    description: "Bank Marketing dataset"
+    tables:
+      - name: bank_marketing
+        description: "Main bank marketing table"
+        columns:
+          - name: age
+            description: "Age of the customer"
+          - name: job
+            description: "Job category"
+          - name: marital
+            description: "Marital status"
+          - name: education
+            description: "Education level"
+          - name: y
+            description: "Subscription outcome (yes/no)" 
