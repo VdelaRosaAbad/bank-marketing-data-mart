@@ -16,16 +16,18 @@ clean-targets:
     - "target"
     - "dbt_packages"
 
+# Solo configuraciones para directorios que realmente existen
 models:
   bank_marketing_dm:
     staging:
       +materialized: view
-    intermediate:
-      +materialized: table
-    marts:
-      +materialized: table
-      marketing:
-        +materialized: table
+    # Configuraciones comentadas hasta que se creen los directorios
+    # intermediate:
+    #   +materialized: table
+    # marts:
+    #   +materialized: table
+    #   marketing:
+    #     +materialized: table
 
 vars:
   start_date: '{{ var("start_date", "2020-01-01") }}'
