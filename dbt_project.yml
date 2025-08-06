@@ -16,8 +16,24 @@ clean-targets:
     - "target"
     - "dbt_packages"
 
+models:
+  bank_marketing_dm:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
+      marketing:
+        +materialized: table
+
 vars:
   start_date: '{{ var("start_date", "2020-01-01") }}'
   end_date: '{{ var("end_date", "2024-12-31") }}'
 
-docs-paths: ["docs"] 
+tests:
+  +store_failures: true
+  +warn_if: ">10"
+  +error_if: ">100"
+
+docs-paths: ["docs"]
