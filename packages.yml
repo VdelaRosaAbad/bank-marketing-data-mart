@@ -1,10 +1,15 @@
 packages:
-  # Puedes agregar paquetes de dbt aquí si los necesitas
-  # Ejemplo:
-  # - package: dbt-labs/dbt_utils
+  # Paquetes de dbt que puedes usar
+  # Descomenta y ajusta las versiones según necesites
+  
+   - package: dbt-labs/dbt_utils
   #   version: 1.1.1
   
-  # - package: calogica/dbt_expectations
+   - package: calogica/dbt_expectations
   #   version: 0.8.5
   
-  # Por ahora, dejamos vacío para eliminar el warning 
+   - package: dbt-labs/codegen
+  #   version: 0.9.0
+  
+   - package: dbt-labs/spark_utils
+  #   version: 0.3.3 
