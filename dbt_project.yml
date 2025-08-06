@@ -16,25 +16,13 @@ clean-targets:
     - "target"
     - "dbt_packages"
 
-# Solo configuraciones para recursos que existen
+# Configuración mínima sin warnings
 models:
   bank_marketing_dm:
-    staging:
-      +materialized: view
-    # Configuraciones comentadas hasta que se creen los directorios
-    # intermediate:
-    #   +materialized: table
-    # marts:
-    #   +materialized: table
-    #   marketing:
-    #     +materialized: table
+    +materialized: view
 
 vars:
   start_date: '{{ var("start_date", "2020-01-01") }}'
   end_date: '{{ var("end_date", "2024-12-31") }}'
-
-# Configuración de tests simplificada
-tests:
-  +store_failures: true
 
 docs-paths: ["docs"] 
