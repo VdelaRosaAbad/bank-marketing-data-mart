@@ -1,0 +1,157 @@
+version: 2
+
+models:
+  - name: stg_bank_marketing
+    description: "Staging model for bank marketing data"
+    columns:
+      - name: age
+        description: "Customer age"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 18
+              max_value: 95
+      - name: job
+        description: "Customer job category"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['admin.', 'blue-collar', 'entrepreneur', 'housemaid', 'management', 'retired', 'self-employed', 'services', 'student', 'technician', 'unemployed', 'unknown']
+      - name: marital
+        description: "Marital status"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['divorced', 'married', 'single', 'unknown']
+      - name: education
+        description: "Education level"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['basic.4y', 'basic.6y', 'basic.9y', 'high.school', 'illiterate', 'professional.course', 'university.degree', 'unknown']
+      - name: default
+        description: "Has credit in default"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['no', 'yes', 'unknown']
+      - name: housing
+        description: "Has housing loan"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['no', 'yes', 'unknown']
+      - name: loan
+        description: "Has personal loan"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['no', 'yes', 'unknown']
+      - name: contact
+        description: "Contact communication type"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['cellular', 'telephone']
+      - name: month
+        description: "Last contact month of year"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+      - name: day_of_week
+        description: "Last contact day of the week"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['mon', 'tue', 'wed', 'thu', 'fri']
+      - name: duration
+        description: "Last contact duration in seconds"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 4918
+      - name: campaign
+        description: "Number of contacts performed during this campaign"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 1
+              max_value: 56
+      - name: pdays
+        description: "Number of days that passed by after the client was last contacted"
+        tests:
+          - not_null
+      - name: previous
+        description: "Number of contacts performed before this campaign"
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 275
+      - name: poutcome
+        description: "Outcome of the previous marketing campaign"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['failure', 'nonexistent', 'success']
+      - name: emp_var_rate
+        description: "Employment variation rate"
+        tests:
+          - not_null
+      - name: cons_price_idx
+        description: "Consumer price index"
+        tests:
+          - not_null
+      - name: cons_conf_idx
+        description: "Consumer confidence index"
+        tests:
+          - not_null
+      - name: euribor3m
+        description: "Euribor 3 month rate"
+        tests:
+          - not_null
+      - name: nr_employed
+        description: "Number of employees"
+        tests:
+          - not_null
+      - name: y
+        description: "Has the client subscribed a term deposit"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['no', 'yes']
+
+  - name: bank_marketing_test
+    description: "Simple test model for bank marketing data"
+    columns:
+      - name: test_column
+        description: "Test column for validation"
+        tests:
+          - not_null
+
+  - name: stg_test
+    description: "Simple staging test model"
+    columns:
+      - name: test_id
+        description: "Test identifier"
+        tests:
+          - not_null
+          - unique
+
+sources:
+  - name: bank_marketing
+    description: "Bank marketing dataset"
+    tables:
+      - name: bank_marketing
+        description: "Raw bank marketing data"
+        columns:
+          - name: age
+            description: "Customer age"
+            tests:
+              - not_null
+          - name: job
+            description: "Customer job category"
+            tests:
+              - not_null 
