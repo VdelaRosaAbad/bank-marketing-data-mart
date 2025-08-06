@@ -16,10 +16,14 @@ clean-targets:
     - "target"
     - "dbt_packages"
 
-# Configuración mínima sin warnings
+# Configuración que funciona
 models:
   bank_marketing_dm:
     +materialized: view
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
 
 vars:
   start_date: '{{ var("start_date", "2020-01-01") }}'
