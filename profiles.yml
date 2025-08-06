@@ -1,0 +1,28 @@
+bank_marketing_dm:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('PROJECT_ID') }}"
+      dataset: "{{ env_var('DATASET_NAME', 'bank_marketing_dm') }}_dev"
+      threads: 4
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+      retries: 1
+      # En Cloud Shell, la autenticación es automática
+      # No necesitamos keyfile
+
+    prod:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('PROJECT_ID') }}"
+      dataset: "{{ env_var('DATASET_NAME', 'bank_marketing_dm') }}_prod"
+      threads: 8
+      timeout_seconds: 300
+      location: US
+      priority: batch
+      retries: 3
+      # En Cloud Shell, la autenticación es automática
+      # No necesitamos keyfile 

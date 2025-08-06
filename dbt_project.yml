@@ -1,0 +1,39 @@
+name: 'bank_marketing_dm'
+version: '1.0.0'
+config-version: 2
+
+profile: 'bank_marketing_dm'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+    - "target"
+    - "dbt_packages"
+
+models:
+  bank_marketing_dm:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    marts:
+      +materialized: table
+      marketing:
+        +materialized: table
+
+vars:
+  start_date: '{{ var("start_date", "2020-01-01") }}'
+  end_date: '{{ var("end_date", "2024-12-31") }}'
+
+tests:
+  +store_failures: true
+  +warn_if: ">10"
+  +error_if: ">100"
+
+docs-paths: ["docs"] 
