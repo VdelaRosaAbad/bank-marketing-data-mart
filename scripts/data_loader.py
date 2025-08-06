@@ -97,7 +97,7 @@ def create_sample_data():
         'day_of_week': np.random.choice(day_of_week, n_records),
         'duration': np.random.randint(0, 1000, n_records),
         'campaign': np.random.randint(1, 20, n_records),
-        'pdays': np.random.choice([-1] + list(range(0, 1000)), n_records, p=[0.7] + [0.3/999]*999),
+        'pdays': np.random.choice([-1] + list(range(0, 1000)), n_records, p=[0.7] + [0.3/1000]*1000),
         'previous': np.random.randint(0, 10, n_records),
         'poutcome': np.random.choice(poutcome, n_records, p=[0.6, 0.3, 0.1]),
         'y': np.random.choice(subscription, n_records, p=[0.9, 0.1])  # 10% de conversión
